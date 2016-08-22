@@ -1,17 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
+﻿using System.Windows;
+using System.Windows.Controls.Primitives;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+using MaterialDesignThemes.Wpf;
+using Task2.GUI.Domain;
 
 namespace Task2.GUI
 {
@@ -23,6 +14,33 @@ namespace Task2.GUI
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        private void UIElement_OnPreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            MenuToggleButton.IsChecked = false;
+        }
+
+        private async void MenuAboutUsButton_OnClick(object sender, RoutedEventArgs e)
+        {
+            var sampleMessageDialog = new SampleMessageDialog
+            {
+                Message = { Text = "Put content here..." }
+            };
+
+            await DialogHost.Show(sampleMessageDialog, "RootDialog");
+        }
+
+        private async void MenuQuitButton_OnClick(object sender, RoutedEventArgs e)
+        {
+            var sampleMessageDialog = new SampleProgressDialog();
+
+            sampleMessageDialog.MouseDoubleClick+= delegate(object o, MouseButtonEventArgs args)
+            {
+                Close();
+            };
+
+            await DialogHost.Show(sampleMessageDialog, "RootDialog");
         }
     }
 }
