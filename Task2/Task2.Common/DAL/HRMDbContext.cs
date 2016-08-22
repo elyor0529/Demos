@@ -29,7 +29,12 @@ namespace Task2.Common.DAL
             //mapping 
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
             modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>();
-
+            modelBuilder.Entity<Developer>()
+                .MapToStoredProcedures(s => s
+                    .Update(u => u.HasName("[dbo].[Product_Update_Developer]"))
+                    .Delete(d => d.HasName("[dbo].[Product_Delete_Developer]"))
+                    .Insert(i => i.HasName("[dbo].[Product_Insert_Developer]")));
+              
             //property filter
             modelBuilder.Filter("IsDeleted", (BaseEntity f) => f.IsDeleted, false);
         }
