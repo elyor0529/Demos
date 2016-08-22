@@ -1,8 +1,0 @@
-D:\projects\Bek Turin\Demos\task1\Task1.Common\bin\Debug\Task1.Common.dll
-D:\projects\Bek Turin\Demos\task1\Task1.Common\bin\Debug\Task1.Common.pdb
-D:\projects\Bek Turin\Demos\task1\Task1.Common\bin\Debug\Scs.dll
-D:\projects\Bek Turin\Demos\task1\Task1.Common\bin\Debug\Scs.xml
-D:\projects\Bek Turin\Build\Task1\Task1.Common.dll
-D:\projects\Bek Turin\Build\Task1\Task1.Common.pdb
-D:\projects\Bek Turin\Demos\task1\Task1.Common\obj\Debug\Task1.Common.dll
-D:\projects\Bek Turin\Demos\task1\Task1.Common\obj\Debug\Task1.Common.pdb
