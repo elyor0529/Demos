@@ -7,6 +7,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using EntityFramework.DynamicFilters;
 using Task2.Common.DAL.EF;
+using Task2.Common.DAL.Models;
 
 namespace Task2.Common.DAL
 {
@@ -16,11 +17,17 @@ namespace Task2.Common.DAL
             : base("DefaultConnection")
         {
         }
+
+        public DbSet<Developer> Developers { get; set; }
+
+        public DbSet<Salary> Salaries { get; set; }
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
 
             //mapping 
+            modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
             modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>();
 
             //property filter
@@ -31,7 +38,7 @@ namespace Task2.Common.DAL
         {
             return Task.Factory.StartNew(() => SaveChanges(), cancellationToken);
         }
-         
+
         public override int SaveChanges()
         {
             try

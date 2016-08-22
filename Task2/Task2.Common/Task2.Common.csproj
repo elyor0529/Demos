@@ -67,9 +67,12 @@
     <Compile Include="BLL\Service\IEntityService.cs" />
     <Compile Include="DAL\HRMDbContext.cs" />
     <Compile Include="DAL\EF\UnitOfWork.cs" />
-    <Compile Include="DAL\Models\Employee.cs" />
+    <Compile Include="DAL\Models\Developer.cs" />
     <Compile Include="DAL\EF\IEntity.cs" />
+    <Compile Include="DAL\Models\Salary.cs" />
     <Compile Include="Enums\OrderByType.cs" />
+    <Compile Include="Helpers\ConvertExtension.cs" />
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
