@@ -1,0 +1,9 @@
+D:\projects\Bek Turin\Demos\Task2\Task2.Demo\bin\Debug\Task2.Demo.exe.config
+D:\projects\Bek Turin\Demos\Task2\Task2.Demo\bin\Debug\Task2.Demo.exe
+D:\projects\Bek Turin\Demos\Task2\Task2.Demo\bin\Debug\Task2.Demo.pdb
+D:\projects\Bek Turin\Demos\Task2\Task2.Demo\obj\Debug\Task2.Demo.exe
+D:\projects\Bek Turin\Demos\Task2\Task2.Demo\obj\Debug\Task2.Demo.pdb
+D:\projects\Bek Turin\Build\Task2\Task2.Demo.exe.config
+D:\projects\Bek Turin\Build\Task2\Task2.Demo.exe
+D:\projects\Bek Turin\Build\Task2\Task2.Demo.pdb
+D:\projects\Bek Turin\Demos\Task2\Task2.Demo\obj\Debug\Task2.Demo.csprojResolveAssemblyReference.cache
