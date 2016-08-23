@@ -21,26 +21,9 @@ namespace Task2.GUI
             MenuToggleButton.IsChecked = false;
         }
 
-        private async void MenuAboutUsButton_OnClick(object sender, RoutedEventArgs e)
+        private void MenuQuitButton_OnClick(object sender, RoutedEventArgs e)
         {
-            var sampleMessageDialog = new SampleMessageDialog
-            {
-                Message = { Text = "Put content here..." }
-            };
-
-            await DialogHost.Show(sampleMessageDialog, "RootDialog");
-        }
-
-        private async void MenuQuitButton_OnClick(object sender, RoutedEventArgs e)
-        {
-            var sampleMessageDialog = new SampleProgressDialog();
-
-            sampleMessageDialog.MouseDoubleClick+= delegate(object o, MouseButtonEventArgs args)
-            {
-                Close();
-            };
-
-            await DialogHost.Show(sampleMessageDialog, "RootDialog");
+            Close();
         }
     }
 }

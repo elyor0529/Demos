@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.Common;
 using System.Linq;
 using System.Reflection;
@@ -10,11 +11,8 @@ namespace Task2.Common.Helpers
 {
     public static class DataExtensions
     {
-        public static List<T> MapToList<T>(this DbDataReader dr) where T : new()
+        public static List<T> MapToList<T>(this IDataReader dr) where T : new()
         {
-            if (dr == null || !dr.HasRows)
-                return null;
-
             var entity = typeof(T);
             var entities = new List<T>();
             var props = entity.GetProperties(BindingFlags.Instance | BindingFlags.Public);
