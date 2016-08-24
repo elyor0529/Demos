@@ -1,25 +1,34 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using Dapper;
-using Task2.Common.Helpers;
 using Task2.Common.Models;
 
 namespace Task2.Common.Data
 {
-    public class HrmDbRepository
+    public static class HrmDbRepository
     {
-        public static async Task<IList<SpReportModel>> GetSalaryReportNotAssigned(DateTime date, int pageNumber, int pageSize)
+        public static async Task<IEnumerable<SpReportModel>> GetSalaryReportNotAssigned(DateTime date, int pageNumber,
+            int pageSize)
         {
-            using (var connection = new SqlConnection())
+            using (
+                var connection =
+                    new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
             {
-                var reader = await connection.ExecuteReaderAsync(String.Format("EXEC [dbo].[sp_SalaryReportNotAssigned] @Date = '{0:d}',@PageNumber = {1},@PageSize = {2}", date, pageNumber, pageSize), null, null, null, CommandType.StoredProcedure);
+                await connection.OpenAsync();
 
-                return reader.MapToList<SpReportModel>();
+                var result = await connection.QueryAsync<SpReportModel>("[dbo].[sp_SalaryReportNotAssigned]",
+                            new
+                            {
+                                Date = string.Format("'{0}/{1}/{2}'", date.Month, date.Day, date.Year),
+                                PageNumber = pageNumber,
+                                PageSize = pageSize
+                            }, commandType: CommandType.StoredProcedure);
+
+                return result;
             }
         }
     }

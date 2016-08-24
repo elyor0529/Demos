@@ -36,6 +36,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -47,7 +48,6 @@
   <ItemGroup>
     <Compile Include="Data\HRMDbReposiroty.cs" />
     <Compile Include="Helpers\ConvertExtension.cs" />
-    <Compile Include="Helpers\DataExtensions.cs" />
     <Compile Include="Models\SpReportModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

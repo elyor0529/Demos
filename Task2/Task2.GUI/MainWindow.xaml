@@ -3,7 +3,6 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
         xmlns:system="clr-namespace:System;assembly=mscorlib"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-        xmlns:materialDesignDemo="clr-namespace:Task2.GUI" 
         xmlns:domain="clr-namespace:Task2.GUI.Domain"
         Title="HRM Demo" Height="600" Width="800"
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
@@ -12,7 +11,9 @@
         TextOptions.TextFormattingMode="Ideal" 
         TextOptions.TextRenderingMode="Auto"        
         Background="{DynamicResource MaterialDesignPaper}"
-        FontFamily="{StaticResource MaterialDesignFont}" Icon="favicon.ico">
+        FontFamily="{StaticResource MaterialDesignFont}" 
+        Icon="favicon.ico"
+        Loaded="MainWindow_OnLoaded">
     <Window.Resources>
         <ResourceDictionary>
             <!-- data template used for the dialogs example, defines a View for a ViewModel of type DateTime  -->
@@ -41,50 +42,33 @@
                             <DataTemplate DataType="domain:DemoItem">
                                 <TextBlock Text="{Binding Name}" Margin="32 0 32 0" />
                             </DataTemplate>
-                        </ListBox.ItemTemplate> 
+                        </ListBox.ItemTemplate>
                         <domain:DemoItem Name="Report">
                             <domain:DemoItem.Content>
                                 <DataGrid Margin="0 8 0 0" ItemsSource="{Binding Reports}" CanUserSortColumns="True" CanUserAddRows="False" AutoGenerateColumns="False"
                       materialDesign:DataGridAssist.CellPadding="13 8 8 8" materialDesign:DataGridAssist.ColumnHeaderPadding="8">
-                                    <DataGrid.Columns> 
-                                        <DataGridTextColumn Binding="{Binding Code}"
-                                            Header="Code"
+                                    <DataGrid.Columns>
+                                        <DataGridTextColumn Binding="{Binding Developer}"
+                                            Header="Developer"
+                                            Width="400"
                                             EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}"
                                             />
                                         <!-- if you want to use the pop up style (MaterialDesignDataGridTextColumnPopupEditingStyle), you must use MaterialDataGridTextColumn -->
-                                        <materialDesign:MaterialDataGridTextColumn Binding="{Binding Name}"
-                                                        Header="Name"                                                        
+                                        <materialDesign:MaterialDataGridTextColumn Binding="{Binding Date}"
+                                                        Header="Date"    
+                                                        Width="100"
                                                         EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}" 
                                                         />
                                         <!-- set a max length to get an indicator in the editor -->
-                                        <materialDesign:MaterialDataGridTextColumn Binding="{Binding Description}"
-                                                        Header="Description"                                                        
-                                                        MaxLength="255" 
+                                        <materialDesign:MaterialDataGridTextColumn Binding="{Binding Price}"
+                                                        Header="Price"                        
+                                                        Width="50"
                                                         EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}" 
                                                         />
-                                        <materialDesign:MaterialDataGridTextColumn Binding="{Binding Numeric}"
-                                                        Header="Numeric"                                                         
-                                                        EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}">
-                                            <DataGridTextColumn.HeaderStyle>
-                                                <Style TargetType="{x:Type DataGridColumnHeader}" BasedOn="{StaticResource MaterialDesignDataGridColumnHeader}">
-                                                    <Setter Property="HorizontalAlignment" Value="Right" />
-                                                </Style>
-                                            </DataGridTextColumn.HeaderStyle>
-                                            <DataGridTextColumn.ElementStyle>
-                                                <Style TargetType="{x:Type TextBlock}">
-                                                    <Setter Property="HorizontalAlignment" Value="Right" />
-                                                </Style>
-                                            </DataGridTextColumn.ElementStyle>
-                                        </materialDesign:MaterialDataGridTextColumn>
-
-                                        <!-- use custom combo box column to get better combos. Use ItemsSourceBinding as your binding template to be applied to each combo -->
-                                        <materialDesign:MaterialDataGridComboBoxColumn Header="Food"        
-                                                            SelectedValueBinding="{Binding Food}"                                                            
-                                                            ItemsSourceBinding="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type DataGrid}}, Path=DataContext.Foods}" />
                                     </DataGrid.Columns>
                                 </DataGrid>
                             </domain:DemoItem.Content>
-                        </domain:DemoItem> 
+                        </domain:DemoItem>
                     </ListBox>
                 </DockPanel>
             </materialDesign:DrawerHost.LeftDrawerContent>
@@ -95,7 +79,7 @@
                         <ToggleButton Style="{StaticResource MaterialDesignHamburgerToggleButton}" IsChecked="False"
                                       x:Name="MenuToggleButton"/>
                         <materialDesign:PopupBox DockPanel.Dock="Right" PlacementMode="BottomAndAlignRightEdges" StaysOpen="False">
-                            <StackPanel> 
+                            <StackPanel>
                                 <Button Content="Quit" Click="MenuQuitButton_OnClick"/>
                             </StackPanel>
                         </materialDesign:PopupBox>
